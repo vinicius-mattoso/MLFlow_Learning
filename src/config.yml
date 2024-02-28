@@ -1,0 +1,7 @@
+parameters:
+  max_depth: 15
+  random_state: 23
+  verbosity: -1
+
+tracking_uri: 
+experiment_name: mlflow-tutorial-train
