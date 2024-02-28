@@ -3,16 +3,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 from lightgbm import LGBMClassifier
-from omegaconf import OmegaConf
 import mlflow 
 import optuna
 
 
 # Path to train.py
 file_path = os.path.dirname(__file__)
-
-# Read configuration file
-# conf = OmegaConf.load(os.path.join(file_path, "config.yml"))
 
 # Set experiments name
 mlflow.set_experiment("Credit-card-experiments-tunning")
@@ -47,8 +43,7 @@ def prepare_data_to_be_used():
 
 def objective(trial):
     print("\n********************************\n")
-    best_val_loss = float('Inf')
-    
+   
     # Start a new mlflow run
     with mlflow.start_run():
         # Get hyperparameter suggestions created by optuna and log them as params using mlflow
@@ -81,11 +76,7 @@ def objective(trial):
         # Tracking model metrics
         mlflow.log_metric("Gini_train", gini_train)
         mlflow.log_metric("Gini_test", gini_test)
-
-        # Show results
-        # print(f"Gini train: {gini_train:.3f}")
-        # print(f"Gini test:  {gini_test:.3f}")
-    
+   
     return 1 - gini_test
 
 def main():
