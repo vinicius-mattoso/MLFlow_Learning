@@ -163,3 +163,5 @@ cython_debug/
 mlruns
 ml_exp
 src/*/tutorial
+.rar
+.zip
