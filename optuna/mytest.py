@@ -82,7 +82,7 @@ def objective(trial):
 def main():
     # Create the optuna study which shares the experiment name
     study = optuna.create_study(study_name="sklearn-mlflow-optuna", direction="minimize")
-    study.optimize(objective, n_trials=10)
+    study.optimize(objective, n_trials=50)
 
     # Print optuna study statistics
     print("\n++++++++++++++++++++++++++++++++++\n")
